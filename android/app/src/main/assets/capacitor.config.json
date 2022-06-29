@@ -1,0 +1,6 @@
+{
+	"appId": "com.brainworks.app",
+	"appName": "MyApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

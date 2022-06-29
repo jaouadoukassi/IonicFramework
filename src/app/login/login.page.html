@@ -1,0 +1,35 @@
+<ion-content >
+  <!-- IMAGE HEADER -->
+  <div id="bg">
+    <ion-col col-6>
+      <img src="/assets/img/LogoBrain.png" class="img1" id="img1">
+    </ion-col>
+    <p> {{ this.msgErr}}</p>
+  </div>
+
+
+
+ <!-- FORM lOGIN -->
+<form [formGroup]="loginform"  >
+  <ion-list lines="none" class="ion-margin">
+
+    <ion-item class="ion-margin">
+      <ion-input placeholder="Enter Username" type="text" formControlName="username" clearInput="true" name="userName" required></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin">
+      <ion-input placeholder="Enter Password" type="Password" formControlName="password" clearInput="true" name="password" required></ion-input>
+    </ion-item>
+    <div class="ion-text-center">
+      <div width="100%">
+        <ion-button shape="round" strong="true" color="plant" class="btn-sign" type="submit" (click)="_doUserLogin()">
+          SIGN IN
+          <ion-icon name="log-in" slot="end"></ion-icon>
+        </ion-button>
+      </div><br />
+      <ion-col class="underline">
+        <a href='https://www.brainworks.es/politica-privacidad/'>Política de privacidad</a>
+      </ion-col>
+    </div>
+  </ion-list>
+</form>
+</ion-content>

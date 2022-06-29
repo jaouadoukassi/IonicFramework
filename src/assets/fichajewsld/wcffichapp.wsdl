@@ -1,0 +1,210 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="svcFichApp" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+<xs:element name="testConnection">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="pConnectionKey" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="testConnectionResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="testConnectionResult" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="doLogin">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="pConnectionKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pUserName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pPass" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="doLoginResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="doLoginResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="doUserFich">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="pConnectionKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pUserName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pPass" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pFechaInicio" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pLocationIncio" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pConcept" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pFechaFin" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pLocationFin" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="esInicio" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="doUserFichResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="doUserFichResult" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getOpenFich">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="pConnectionKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pUserName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pPass" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getOpenFichResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getOpenFichResult" nillable="true" type="q1:ArrayOfstring"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/">
+<xs:element name="anyType" nillable="true" type="xs:anyType"/>
+<xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+<xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+<xs:element name="boolean" nillable="true" type="xs:boolean"/>
+<xs:element name="byte" nillable="true" type="xs:byte"/>
+<xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+<xs:element name="decimal" nillable="true" type="xs:decimal"/>
+<xs:element name="double" nillable="true" type="xs:double"/>
+<xs:element name="float" nillable="true" type="xs:float"/>
+<xs:element name="int" nillable="true" type="xs:int"/>
+<xs:element name="long" nillable="true" type="xs:long"/>
+<xs:element name="QName" nillable="true" type="xs:QName"/>
+<xs:element name="short" nillable="true" type="xs:short"/>
+<xs:element name="string" nillable="true" type="xs:string"/>
+<xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+<xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+<xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+<xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+<xs:element name="char" nillable="true" type="tns:char"/>
+<xs:simpleType name="char">
+<xs:restriction base="xs:int"/>
+</xs:simpleType>
+<xs:element name="duration" nillable="true" type="tns:duration"/>
+<xs:simpleType name="duration">
+<xs:restriction base="xs:duration">
+<xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+<xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+<xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="guid" nillable="true" type="tns:guid"/>
+<xs:simpleType name="guid">
+<xs:restriction base="xs:string">
+<xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:attribute name="FactoryType" type="xs:QName"/>
+<xs:attribute name="Id" type="xs:ID"/>
+<xs:attribute name="Ref" type="xs:IDREF"/>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+<xs:complexType name="ArrayOfstring">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring"/>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IsvcFichApp_testConnection_InputMessage">
+<wsdl:part name="parameters" element="tns:testConnection"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_testConnection_OutputMessage">
+<wsdl:part name="parameters" element="tns:testConnectionResponse"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_doLogin_InputMessage">
+<wsdl:part name="parameters" element="tns:doLogin"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_doLogin_OutputMessage">
+<wsdl:part name="parameters" element="tns:doLoginResponse"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_doUserFich_InputMessage">
+<wsdl:part name="parameters" element="tns:doUserFich"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_doUserFich_OutputMessage">
+<wsdl:part name="parameters" element="tns:doUserFichResponse"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_getOpenFich_InputMessage">
+<wsdl:part name="parameters" element="tns:getOpenFich"/>
+</wsdl:message>
+<wsdl:message name="IsvcFichApp_getOpenFich_OutputMessage">
+<wsdl:part name="parameters" element="tns:getOpenFichResponse"/>
+</wsdl:message>
+<wsdl:portType name="IsvcFichApp">
+<wsdl:operation name="testConnection">
+<wsdl:input wsaw:Action="http://tempuri.org/IsvcFichApp/testConnection" message="tns:IsvcFichApp_testConnection_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IsvcFichApp/testConnectionResponse" message="tns:IsvcFichApp_testConnection_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="doLogin">
+<wsdl:input wsaw:Action="http://tempuri.org/IsvcFichApp/doLogin" message="tns:IsvcFichApp_doLogin_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IsvcFichApp/doLoginResponse" message="tns:IsvcFichApp_doLogin_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="doUserFich">
+<wsdl:input wsaw:Action="http://tempuri.org/IsvcFichApp/doUserFich" message="tns:IsvcFichApp_doUserFich_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IsvcFichApp/doUserFichResponse" message="tns:IsvcFichApp_doUserFich_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="getOpenFich">
+<wsdl:input wsaw:Action="http://tempuri.org/IsvcFichApp/getOpenFich" message="tns:IsvcFichApp_getOpenFich_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IsvcFichApp/getOpenFichResponse" message="tns:IsvcFichApp_getOpenFich_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BasicHttpBinding_IsvcFichApp" type="tns:IsvcFichApp">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="testConnection">
+<soap:operation soapAction="http://tempuri.org/IsvcFichApp/testConnection" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="doLogin">
+<soap:operation soapAction="http://tempuri.org/IsvcFichApp/doLogin" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="doUserFich">
+<soap:operation soapAction="http://tempuri.org/IsvcFichApp/doUserFich" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getOpenFich">
+<soap:operation soapAction="http://tempuri.org/IsvcFichApp/getOpenFich" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="svcFichApp">
+<wsdl:port name="BasicHttpBinding_IsvcFichApp" binding="tns:BasicHttpBinding_IsvcFichApp">
+<soap:address location="http://192.168.1.222/svcFichApp.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

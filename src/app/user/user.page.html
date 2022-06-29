@@ -1,0 +1,47 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content onload="">
+  <!-- HEADER -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col class="col-img" size="6">
+        <img src="/assets/img/LogoBrain.png" class="img" id="img1">
+      </ion-col>
+      <ion-col class="salir" size="6" align="right">
+        <ion-button shape="" color="secondary" [routerLink]="['/login']"> Salir</ion-button>
+      </ion-col>
+      <ion-col align="right" class="user">
+        <b>{{usuario}}</b>
+      </ion-col>
+    </ion-row>
+  </ion-grid><br />
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <b> {{myDate | date: 'yyyy/MM/dd hh:mm' }}</b>
+    </ion-col>
+  </ion-row>
+  <!-- HEADER -->
+  <div class="centent">
+    <!--SELECT MODAL 2-->
+    <ion-item class="psept">
+      <ion-label>Seleccionar Concepto:</ion-label>
+      <ion-select ng-model="slctFicha">
+        <ion-select-option value="Jornada">Jornada</ion-select-option>
+        <ion-select-option value="Comida">Comida</ion-select-option>
+        <ion-select-option value="Pausa">Pausa</ion-select-option>
+        <ion-select-option value="Compromiso Puntual">Compromiso Puntual</ion-select-option>
+        <ion-select-option value="Urgencia">Urgencia</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" color="plant" shape="underline" (click)="getFichCreate()" class="psept">Fichar</ion-button>
+    <!--SELECT MODAL 2-->
+  </div><br>
+  <ion-text #appHighlight><p>Fichajes abiertas:</p></ion-text> 
+  <div class="content" >
+    <ul  *ngFor="let item of tareas"  (click)="_addEvent(item)">
+      <li #asItem  > {{item}}</li>
+     </ul>
+  </div>
+</ion-content>

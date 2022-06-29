@@ -1,7 +1,8 @@
 {
-  "name": "MyApp",
+  "name": "BrainWorks",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
