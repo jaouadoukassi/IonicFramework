@@ -43,8 +43,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.dataservice.clienState().subscribe(ready => {
       if (ready) {
-        // this.dataservice._doLogin(form.username, form.password);
-        this._doUserLogin();
+       
       }
     })
    
@@ -65,7 +64,7 @@ export class LoginPage implements OnInit {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this._storage = storage;
-  
+  console.log('stooorage', this._storage)
   }
 
 
@@ -77,39 +76,28 @@ export class LoginPage implements OnInit {
     const form = this.loginform.value;  //recibir datos del usuario.
     
 
-    //LLAMADA AL WEB SERVICE
-   //resultado = this.dataservice._doLogin(form.username, form.password);    
-
-    //OBTENER DATOS
-    this.usuario = this._storage.get('username');
-
-    this.dataservice._doLogin('jaouad', '12345').subscribe(
-      err => { console.log(err.message) },
-      data => {
-      console.log('dataWebservice', data)
-        
-    })
+ 
 
 
     console.log('username:', form.username, 'Password:', form.password, 'resultado:', resulatado );
     //resultado !== true
     //this.dataservice._doLogin(form.username, form.password) !== true
-    //if (this.dataservice._doLogin(form.username, form.password) !== form.usuario && form.password) {
-    //    const alert = await this.alertController.create({
-    //      subHeader: 'Datos Incorrectos',
-    //      message: 'El Usuario o el password Incorrecto',
-    //      buttons: ['Aceptar']
-    //    });
-    //  console.log('___doooooogiin_________4');
-    //  await alert.present();
+    if (this.dataservice._doLogin(form.username, form.password) !== form.usuario && form.password) {
+        const alert = await this.alertController.create({
+          subHeader: 'Datos Incorrectos',
+          message: 'El Usuario o el password Incorrecto',
+          buttons: ['Aceptar']
+        });
+      console.log('___doooooogiin_________4');
+      await alert.present();
       
-    // } else {
-    //    //CREAR LA BASE DE DATOS LOCAL.
-    //   //ASIGNAR LOS DATOS
-    //   this._storage.set('username', form.username);
-    //   this._storage.set('pwd', form.password);
-    //  this.navCtl.navigateRoot('/user');     
-    // }
+     } else {
+        //CREAR LA BASE DE DATOS LOCAL.
+       //ASIGNAR LOS DATOS
+       this._storage.set('username', form.username);
+       this._storage.set('pwd', form.password);
+      this.navCtl.navigateRoot('/user');     
+     }
     
   }
 

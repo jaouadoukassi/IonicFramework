@@ -65,32 +65,19 @@ export class DataService {
     pPass = pPass;
     const pconnt = 'DvRMYj6Bxhdk7Nk5dey127202206';
 
-    return this.client.call('doLogin', { pUserName, pPass, pconnt }).pipe(
-      map(data => {
-        console.log("DATA", data)
-        return data.result.doLoginResult;
-      })
-      )
-      //.subscribe({
-      //  next(position) {
-      //    console.log('Current Position: ', position);
-      //  },
-      //  error(msg) {
-      //    console.log('Error Getting Location: ', msg);
-      //  }
-      //});
+    return this.client.call('doLogin', { pUserName, pPass, pconnt })     
+      .subscribe({
+        next(position) {
+          console.log('Current Position: ', position);
+        },
+        error(msg) {
+          console.log('Error Getting Location: ', msg);
+        }
+      });
 
 
   }
-  /**
-   * pipe(
-        map(data => {
-        console.log('doLogin______2', this.rest);
-         console.log('doLogin______3', data.result.doLoginResponse.pUserName.pPass);
-        return data.result.doLoginResponse.pUserName.pPass;
-
-      })
-    );*/
+  
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
